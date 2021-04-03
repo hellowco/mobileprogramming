@@ -3,9 +3,12 @@ import pymysql
 import time
 import serverInfo
 import jusik_csv
+import theme_csv
+import news_csv
 import netPurchase
 from pywinauto import application
 from datetime import datetime
+
 
 if __name__ == "__main__":
 
@@ -29,13 +32,28 @@ if __name__ == "__main__":
 
     # get api data
     per = jusik_csv.jusik(dateString)
+    theme = theme_csv.theme(dateString)
     orgNetPurchase= netPurchase.netPurchase(1)
     forNetPurchase = netPurchase.netPurchase(2)
 
+    #Debug
+    for themeCode in theme.themeCode:
+        stockData = theme_csv.getStockFromTheme(themeCode).stockCode
+        for k in stockData:
+            news_csv.news(k)
+            
+
+    
     # print("외국인 상위 10", netPurchase.netPurchase(1))
     # print("기관계 상위 10", netPurchase.netPurchase(2))
 
     # data to db
     # per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='append',index=False) #if_exists : append, replace, fail(dafault)
+    # theme.to_sql(name=dateString + '_Theme', con=db_connection, if_exists='replace', index=False)
     # orgNetPurchase.to_sql(name='orgData', con=db_connection, if_exists='replace',index=False)
     # forNetPurchase.to_sql(name='forData', con=db_connection, if_exists='replace',index=False)
+
+    # for k in theme.themeCode:
+    #     theme_csv.getStockFromTheme(k).to_sql(name='dateString' + '_ThemeStocks', con=db_connection, if_exists='append', index=False)
+    #     for k in stockData:
+    #             news_csv.news(k).to_sql(name='dateString' + '_Stocknews', con=db_connection, if_exists='replace', index=False)
