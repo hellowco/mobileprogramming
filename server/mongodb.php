@@ -1,8 +1,9 @@
 <?php
     try {
-        $mongo = new MongoDB\Driver\Manager("mongodb://user:user@localhost:27017");
+        $mongo = new MongoDB\Driver\Manager("mongodb://user:user@localhost:27017/user");
+        $collection = $mongo -> test;
  
-        $command = new MongoDB\Driver\Command(['ping' => 1]);
+        // $command = new MongoDB\Driver\Command(['ping' => 1]);
 	echo "connected";
     } catch (MongoDB\Driver\Exception\Exception $e) {
         $filename = basename(__FILE__);

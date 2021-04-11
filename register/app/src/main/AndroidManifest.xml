@@ -12,15 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Register"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.jusik.LoginActivity">
+        <activity android:name=".MemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.jusik.RegisterActivity"/>
-        <activity android:name="com.example.jusik.MainActivity"/>
+        <activity android:name=".AddActivity"/>
+<!--        <activity android:name="com.example.jusik.LoginActivity">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity android:name="com.example.jusik.RegisterActivity"/>-->
+<!--        <activity android:name="com.example.jusik.MainActivity"/>-->
     </application>
 
 </manifest>
