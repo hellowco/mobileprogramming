@@ -12,13 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Register"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MemoActivity">
+        <activity android:name=".Memo.MemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActivity"/>
+        <activity android:name=".Memo.AddActivity"/>
+        <activity android:name=".Memo.ModifyActivity"/>
 <!--        <activity android:name="com.example.jusik.LoginActivity">-->
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->

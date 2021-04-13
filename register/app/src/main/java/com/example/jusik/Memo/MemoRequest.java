@@ -1,4 +1,4 @@
-package com.example.jusik;
+package com.example.jusik.Memo;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
