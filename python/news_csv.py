@@ -27,8 +27,8 @@ def news(stockCode):
                             "time":time,
                             "stockNews":stockNews}, ignore_index=True)
         
-    print(data)
+    # print(data)
     return data
 
-if __name__=="__main__":
-    news("A005930")
+# if __name__=="__main__":
+#     news("A005930")

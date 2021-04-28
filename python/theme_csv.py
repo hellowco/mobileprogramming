@@ -61,7 +61,7 @@ def theme(datestring):
                             "numOfFalling":numOfFalling,
                             "percentOfRising":percentOfRising}, ignore_index=True)
 
-    print(data)
+    # print(data)
     return data
 
 def getStockFromTheme(themeCode):
@@ -105,5 +105,5 @@ def getStockFromTheme(themeCode):
                             "volume":volume,
                             "compareToYesterday":compareToYesterday}, ignore_index=True)
 
-    print(data)
+    # print(data)
     return data

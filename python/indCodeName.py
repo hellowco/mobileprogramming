@@ -4,13 +4,15 @@
 import pandas as pd
 import win32com.client
 
-objCpCodeMgr = win32com.client.Dispatch("CpUtil.CpCodeMgr")
+def getCodeName():
 
-data = pd.DataFrame(columns=['indCode', 'indName'])
+    objCpCodeMgr = win32com.client.Dispatch("CpUtil.CpCodeMgr")
 
-for i in range(0,1000):
-    name = objCpCodeMgr.GetIndustryName(i)
-    code = i;
-    data = data.append({'indCode': code,'indName': name}, ignore_index=True)
+    data = pd.DataFrame(columns=['indCode', 'indName'])
 
-data.to_csv('indCodeName.csv',encoding='utf-8')
+    for i in range(10000):
+        name = objCpCodeMgr.GetIndustryName(i)
+        code = i;
+        data = data.append({'indCode': code,'indName': name}, ignore_index=True)
+        
+    return data

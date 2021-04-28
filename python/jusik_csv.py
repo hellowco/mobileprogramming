@@ -59,5 +59,5 @@ def jusik(datestring):
                             'BPS': bps,
                             'PBR': pbr}, ignore_index=True)
 
-    print(data)
+    # print(data)
     return data

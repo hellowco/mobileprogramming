@@ -6,6 +6,7 @@ import jusik_csv
 import theme_csv
 import news_csv
 import netPurchase
+from indCodeName import getCodeName
 from pywinauto import application
 from datetime import datetime
 
@@ -22,7 +23,7 @@ if __name__ == "__main__":
     #     print('증권 api 로그인 실패')
     try: 
         #DB login
-        db_connection_str = 'mysql+pymysql://root:root@localhost/test'
+        db_connection_str = 'mysql+pymysql://'+serverInfo.user+':'+serverInfo.password+'@'+serverInfo.host+'/'+serverInfo.dbname
         db_connection = create_engine(db_connection_str)
         conn = db_connection.connect()
     except:
@@ -31,6 +32,7 @@ if __name__ == "__main__":
     dateString = datetime.strftime(datetime.now(), '%Y%m%d')
 
     # get api data
+    codeName = getCodeName()
     per = jusik_csv.jusik(dateString)
     theme = theme_csv.theme(dateString)
     orgNetPurchase= netPurchase.netPurchase(1)
@@ -48,12 +50,13 @@ if __name__ == "__main__":
     # print("기관계 상위 10", netPurchase.netPurchase(2))
 
     # data to db
-    # per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='append',index=False) #if_exists : append, replace, fail(dafault)
-    # theme.to_sql(name=dateString + '_Theme', con=db_connection, if_exists='replace', index=False)
-    # orgNetPurchase.to_sql(name='orgData', con=db_connection, if_exists='replace',index=False)
-    # forNetPurchase.to_sql(name='forData', con=db_connection, if_exists='replace',index=False)
+    codeName.to_sql(name= 'CodeName', con=db_connection, if_exists='replace',index=False)
+    per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='replace',index=False) #if_exists : append, replace, fail(dafault)
+    theme.to_sql(name=dateString + '_Theme', con=db_connection, if_exists='replace', index=False)
+    orgNetPurchase.to_sql(name='orgData', con=db_connection, if_exists='replace',index=False)
+    forNetPurchase.to_sql(name='forData', con=db_connection, if_exists='replace',index=False)
 
-    # for k in theme.themeCode:
-    #     theme_csv.getStockFromTheme(k).to_sql(name='dateString' + '_ThemeStocks', con=db_connection, if_exists='append', index=False)
-    #     for k in stockData:
-    #             news_csv.news(k).to_sql(name='dateString' + '_Stocknews', con=db_connection, if_exists='replace', index=False)
+    for k in theme.themeCode:
+        theme_csv.getStockFromTheme(k).to_sql(name='dateString' + '_ThemeStocks', con=db_connection, if_exists='append', index=False)
+        for k in stockData:
+                news_csv.news(k).to_sql(name='dateString' + '_Stocknews', con=db_connection, if_exists='replace', index=False)
