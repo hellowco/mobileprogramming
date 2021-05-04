@@ -66,16 +66,16 @@ def theme(datestring):
 
 def getStockFromTheme(themeCode):
     """
-    테마코드를 받아서 해당 테마에 속한 종목 반환 recommended 변수로 종목 반환 수 조절.
+    테마코드를 받아서 해당 테마에 속한 종목 반환,
+    recommended 변수로 종목 반환 수 조절.
     """
-    print("테마당 종목 검색, 테마코드 : {0}".format(themeCode))
+    #print("테마당 종목 검색, 테마코드 : {0}".format(themeCode))
     recommended = 3
     objCpSvr8561T = win32com.client.Dispatch("Dscbo1.CpSvr8561T")
-    data = pd.DataFrame(columns=["stockCode",
-                                 "stockName", "curPrice",
+    data = pd.DataFrame(columns=["stockCode","stockName", 
+                                 "themeCode","curPrice",
                                  "diff", "percentOfDiff",
-                                 "volume", "compareToYesterday",
-                                 ])
+                                 "volume", "compareToYesterday"])
     # data index:
     # 0 - (string)종목코드
     # 1 - (string)종목명
@@ -97,13 +97,30 @@ def getStockFromTheme(themeCode):
         volume = objCpSvr8561T.GetDataValue (5, k)
         compareToYesterday = objCpSvr8561T.GetDataValue (6, k)
 
-        data = data.append({"stockCode":stockCode,
-                            "stockName":stockName,
-                            "curPrice":curPrice,
-                            "diff":diff,
-                            "percentOfDiff":percentOfDiff,
-                            "volume":volume,
+        data = data.append({"stockCode"         :stockCode,
+                            "stockName"         :stockName,
+                            "themeCode"         :themeCode,
+                            "curPrice"          :curPrice,
+                            "diff"              :diff,
+                            "percentOfDiff"     :percentOfDiff,
+                            "volume"            :volume,
                             "compareToYesterday":compareToYesterday}, ignore_index=True)
 
-    # print(data)
+    # sort by "percentOfDiff"
+
+    data = data.sort_values(by=["percentOfDiff"], axis=0, ascending=False)
+    print(data)
     return data
+
+def getThemeFromStock(stockCode):
+    objCpSvr8562 = win32com.client.Dispatch("Dscbo1.CpSvr8562")
+    
+    objCpSvr8562.SetInputValue(0, stockCode)
+
+    objCpSvr8562.BlockRequest()
+
+    l = []
+    for k in range(10):
+        l.append((objCpSvr8562.GetDataValue(0, k), objCpSvr8562.GetDataValue(1, k)))
+
+    return l
