@@ -4,13 +4,13 @@
 import pandas as pd
 import win32com.client
 
-def getCodeName():
+def getIndCodeName():
 
     objCpCodeMgr = win32com.client.Dispatch("CpUtil.CpCodeMgr")
 
     data = pd.DataFrame(columns=['indCode', 'indName'])
 
-    for i in range(10000):
+    for i in range(1000):
         name = objCpCodeMgr.GetIndustryName(i)
         code = i;
         data = data.append({'indCode': code,'indName': name}, ignore_index=True)

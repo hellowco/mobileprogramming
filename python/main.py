@@ -6,7 +6,8 @@ import jusik_csv
 import theme_csv
 import news_csv
 import netPurchase
-from indCodeName import getCodeName
+from indCodeName import getIndCodeName
+from stocklist import getCodeName
 from pywinauto import application
 from datetime import datetime
 
@@ -32,7 +33,8 @@ if __name__ == "__main__":
     dateString = datetime.strftime(datetime.now(), '%Y%m%d')
 
     # get api data
-    codeName = getCodeName()
+    CodeName = getCodeName()
+    indCodeName = getIndCodeName()
     per = jusik_csv.jusik(dateString)
     theme = theme_csv.theme(dateString)
     orgNetPurchase= netPurchase.netPurchase(1)
@@ -50,13 +52,14 @@ if __name__ == "__main__":
     # print("기관계 상위 10", netPurchase.netPurchase(2))
 
     # data to db
-    codeName.to_sql(name= 'CodeName', con=db_connection, if_exists='replace',index=False)
+    CodeName.to_sql(name= 'codename', con=db_connection, if_exists='replace',index=False)
+    indCodeName.to_sql(name= 'indcodeName', con=db_connection, if_exists='replace',index=False)
     per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='replace',index=False) #if_exists : append, replace, fail(dafault)
-    theme.to_sql(name=dateString + '_Theme', con=db_connection, if_exists='replace', index=False)
-    orgNetPurchase.to_sql(name='orgData', con=db_connection, if_exists='replace',index=False)
-    forNetPurchase.to_sql(name='forData', con=db_connection, if_exists='replace',index=False)
+    theme.to_sql(name=dateString + '_theme', con=db_connection, if_exists='replace', index=False)
+    orgNetPurchase.to_sql(name='orgdata', con=db_connection, if_exists='replace',index=False)
+    forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
 
     for k in theme.themeCode:
-        theme_csv.getStockFromTheme(k).to_sql(name='dateString' + '_ThemeStocks', con=db_connection, if_exists='append', index=False)
+        theme_csv.getStockFromTheme(k).to_sql(name=dateString + '_themestocks', con=db_connection, if_exists='append', index=False)
         for k in stockData:
-                news_csv.news(k).to_sql(name='dateString' + '_Stocknews', con=db_connection, if_exists='replace', index=False)
+                news_csv.news(k).to_sql(name=dateString + '_stocknews', con=db_connection, if_exists='replace', index=False)
