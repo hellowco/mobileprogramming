@@ -5,7 +5,7 @@
  
     mysqli_query($conn, "set names utf8");
  
-    $sql= "select * from codename";
+    $sql= "select * from fordata";
     $result=mysqli_query($conn, $sql);
  
     $rowCnt= mysqli_num_rows($result);

@@ -15,7 +15,7 @@ def netPurchase(investFlag):
     # BlockRequest
     objCpSvr.BlockRequest()
 
-    data = pd.DataFrame(columns=["code", "종목명",
+    data = pd.DataFrame(columns=["Code", "Name",
                                  "현재가", "대비",
                                  "대비율", "거래량",
                                  "외국인", "기관계"])

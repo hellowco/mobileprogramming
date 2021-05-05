@@ -23,7 +23,7 @@ def jusik(datestring):
 
     # data순서 "번호","업종코드","주식코드","종목명","PER","전일 외국인순매수","전일 기관순매수"
     data = pd.DataFrame(columns=["indCode",
-                                 "stockCode", "stockName",
+                                 "Code", "Name",
                                  "juga", "PER",
                                  "EPS", "ROE",
                                  "BPS", "PBR"])
@@ -50,8 +50,8 @@ def jusik(datestring):
 
         # PrintData
         data = data.append({'indCode': indCode,
-                            'stockCode': code,
-                            'stockName': name,
+                            'Code': code,
+                            'Name': name,
                             'juga': juga,
                             'PER': per,
                             'EPS': eps,

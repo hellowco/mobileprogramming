@@ -33,20 +33,12 @@ if __name__ == "__main__":
     dateString = datetime.strftime(datetime.now(), '%Y%m%d')
 
     # get api data
-    # CodeName = getCodeName()
-    # indCodeName = getIndCodeName()
-    # per = jusik_csv.jusik(dateString)
-    # theme = theme_csv.theme(dateString)
+    CodeName = getCodeName()
+    indCodeName = getIndCodeName()
+    per = jusik_csv.jusik(dateString)
+    theme = theme_csv.theme(dateString)
     forNetPurchase= netPurchase.netPurchase(1)
     orgNetPurchase = netPurchase.netPurchase(2)
-
-    #Debug
-    # for themeCode in theme.themeCode:
-    #     stockData = theme_csv.getStockFromTheme(themeCode).stockCode
-    #     for k in stockData:
-    #         news_csv.news(k)
-            
-
     
     #Debug
     # for themeCode in theme.themeCode:
@@ -58,11 +50,12 @@ if __name__ == "__main__":
     # print("기관계 상위 10", netPurchase.netPurchase(2))
 
     # data to db
-    codeName.to_sql(name= 'CodeName', con=db_connection, if_exists='replace',index=False)
+    CodeName.to_sql(name= 'codename', con=db_connection, if_exists='replace',index=False)
+    indCodeName.to_sql(name= 'indcodename', con=db_connection, if_exists='replace',index=False)
     per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='replace',index=False) #if_exists : append, replace, fail(dafault)
-    theme.to_sql(name=dateString + '_Theme', con=db_connection, if_exists='replace', index=False)
-    orgNetPurchase.to_sql(name='orgData', con=db_connection, if_exists='replace',index=False)
-    forNetPurchase.to_sql(name='forData', con=db_connection, if_exists='replace',index=False)
+    theme.to_sql(name=dateString + '_theme', con=db_connection, if_exists='replace', index=False)
+    orgNetPurchase.to_sql(name='orgdata', con=db_connection, if_exists='replace',index=False)
+    forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
 
     for themeCode in theme.themeCode:
         theme_stock_data = theme_csv.getStockFromTheme(themeCode)
