@@ -33,18 +33,18 @@ if __name__ == "__main__":
     dateString = datetime.strftime(datetime.now(), '%Y%m%d')
 
     # get api data
-    CodeName = getCodeName()
-    indCodeName = getIndCodeName()
-    per = jusik_csv.jusik(dateString)
-    theme = theme_csv.theme(dateString)
-    orgNetPurchase= netPurchase.netPurchase(1)
-    forNetPurchase = netPurchase.netPurchase(2)
+    # CodeName = getCodeName()
+    # indCodeName = getIndCodeName()
+    # per = jusik_csv.jusik(dateString)
+    # theme = theme_csv.theme(dateString)
+    forNetPurchase= netPurchase.netPurchase(1)
+    orgNetPurchase = netPurchase.netPurchase(2)
 
     #Debug
-    for themeCode in theme.themeCode:
-        stockData = theme_csv.getStockFromTheme(themeCode).stockCode
-        for k in stockData:
-            news_csv.news(k)
+    # for themeCode in theme.themeCode:
+    #     stockData = theme_csv.getStockFromTheme(themeCode).stockCode
+    #     for k in stockData:
+    #         news_csv.news(k)
             
 
     
@@ -52,14 +52,14 @@ if __name__ == "__main__":
     # print("기관계 상위 10", netPurchase.netPurchase(2))
 
     # data to db
-    CodeName.to_sql(name= 'codename', con=db_connection, if_exists='replace',index=False)
-    indCodeName.to_sql(name= 'indcodeName', con=db_connection, if_exists='replace',index=False)
-    per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='replace',index=False) #if_exists : append, replace, fail(dafault)
-    theme.to_sql(name=dateString + '_theme', con=db_connection, if_exists='replace', index=False)
+    # CodeName.to_sql(name= 'codename', con=db_connection, if_exists='replace',index=False)
+    # indCodeName.to_sql(name= 'indcodeName', con=db_connection, if_exists='replace',index=False)
+    # per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='replace',index=False) #if_exists : append, replace, fail(dafault)
+    # theme.to_sql(name=dateString + '_theme', con=db_connection, if_exists='replace', index=False)
     orgNetPurchase.to_sql(name='orgdata', con=db_connection, if_exists='replace',index=False)
     forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
 
-    for k in theme.themeCode:
-        theme_csv.getStockFromTheme(k).to_sql(name=dateString + '_themestocks', con=db_connection, if_exists='append', index=False)
-        for k in stockData:
-                news_csv.news(k).to_sql(name=dateString + '_stocknews', con=db_connection, if_exists='replace', index=False)
+    # for k in theme.themeCode:
+    #     theme_csv.getStockFromTheme(k).to_sql(name=dateString + '_themestocks', con=db_connection, if_exists='append', index=False)
+    #     for k in stockData:
+    #             news_csv.news(k).to_sql(name=dateString + '_stocknews', con=db_connection, if_exists='replace', index=False)
