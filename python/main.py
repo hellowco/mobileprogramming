@@ -48,18 +48,42 @@ if __name__ == "__main__":
             
 
     
+    #Debug
+    # for themeCode in theme.themeCode:
+    #     stockData = theme_csv.getStockFromTheme(themeCode).stockCode
+    #     for stockCode in stockData:
+    #         news_list.append(news_csv.news(stockCode, themeCode))
+
     # print("외국인 상위 10", netPurchase.netPurchase(1))
     # print("기관계 상위 10", netPurchase.netPurchase(2))
 
     # data to db
-    # CodeName.to_sql(name= 'codename', con=db_connection, if_exists='replace',index=False)
-    # indCodeName.to_sql(name= 'indcodeName', con=db_connection, if_exists='replace',index=False)
-    # per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='replace',index=False) #if_exists : append, replace, fail(dafault)
-    # theme.to_sql(name=dateString + '_theme', con=db_connection, if_exists='replace', index=False)
-    orgNetPurchase.to_sql(name='orgdata', con=db_connection, if_exists='replace',index=False)
-    forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
+    codeName.to_sql(name= 'CodeName', con=db_connection, if_exists='replace',index=False)
+    per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='replace',index=False) #if_exists : append, replace, fail(dafault)
+    theme.to_sql(name=dateString + '_Theme', con=db_connection, if_exists='replace', index=False)
+    orgNetPurchase.to_sql(name='orgData', con=db_connection, if_exists='replace',index=False)
+    forNetPurchase.to_sql(name='forData', con=db_connection, if_exists='replace',index=False)
 
-    # for k in theme.themeCode:
-    #     theme_csv.getStockFromTheme(k).to_sql(name=dateString + '_themestocks', con=db_connection, if_exists='append', index=False)
-    #     for k in stockData:
-    #             news_csv.news(k).to_sql(name=dateString + '_stocknews', con=db_connection, if_exists='replace', index=False)
+    for themeCode in theme.themeCode:
+        theme_stock_data = theme_csv.getStockFromTheme(themeCode)
+        theme_stock_data.to_sql(name=dateString + f"_{themeCode}", con=db_connection, if_exists='replace', index=False)
+        for stock in theme_stock_data.stockCode:
+                news_csv.news(stock, themeCode).to_sql(name=dateString + f"_{stock}_News", con=db_connection, if_exists='replace', index=False)
+
+    #
+    # userContainer = dict() or list()
+    # for k in range(numofusers):
+    #   user = User(username)
+    #   userContainer[username] = user
+    #   
+
+    # while (true):
+    #   if user event on:
+    #       eventQueue.enqueue(userEvent)
+
+    # For every eventQueue:
+    # userContainer[eventUsername].setInterest()
+    # userContainer[eventUsername].showRelated()
+    # userContainer[eventUsername].intersted.to_sql(name=username+"_Interested", if_exist='replace')
+    # userContainer[eveneUsername].related.to_sql(name=username + "_Related", if_exist='replace')
+
