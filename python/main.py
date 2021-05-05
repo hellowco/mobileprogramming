@@ -6,7 +6,8 @@ import jusik_csv
 import theme_csv
 import news_csv
 import netPurchase
-from indCodeName import getCodeName
+from indCodeName import getIndCodeName
+from stocklist import getCodeName
 from pywinauto import application
 from datetime import datetime
 
@@ -32,12 +33,19 @@ if __name__ == "__main__":
     dateString = datetime.strftime(datetime.now(), '%Y%m%d')
 
     # get api data
-    codeName = getCodeName()
-    per = jusik_csv.jusik(dateString)
-    orgNetPurchase= netPurchase.netPurchase(1)
-    forNetPurchase = netPurchase.netPurchase(2)
+    # CodeName = getCodeName()
+    # indCodeName = getIndCodeName()
+    # per = jusik_csv.jusik(dateString)
+    # theme = theme_csv.theme(dateString)
+    forNetPurchase= netPurchase.netPurchase(1)
+    orgNetPurchase = netPurchase.netPurchase(2)
 
-    theme = theme_csv.theme(dateString)
+    #Debug
+    # for themeCode in theme.themeCode:
+    #     stockData = theme_csv.getStockFromTheme(themeCode).stockCode
+    #     for k in stockData:
+    #         news_csv.news(k)
+            
 
     
     #Debug

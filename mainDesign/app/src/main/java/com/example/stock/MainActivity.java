@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 memoButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new ListFragment());
+                fragmentTransaction.replace(R.id.fragment, new StockListFragment());
                 fragmentTransaction.commit();
             }
         });
