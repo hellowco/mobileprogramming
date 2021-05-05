@@ -34,18 +34,18 @@ if __name__ == "__main__":
     # get api data
     codeName = getCodeName()
     per = jusik_csv.jusik(dateString)
-    theme = theme_csv.theme(dateString)
     orgNetPurchase= netPurchase.netPurchase(1)
     forNetPurchase = netPurchase.netPurchase(2)
 
-    #Debug
-    for themeCode in theme.themeCode:
-        stockData = theme_csv.getStockFromTheme(themeCode).stockCode
-        for k in stockData:
-            news_csv.news(k)
-            
+    theme = theme_csv.theme(dateString)
 
     
+    #Debug
+    # for themeCode in theme.themeCode:
+    #     stockData = theme_csv.getStockFromTheme(themeCode).stockCode
+    #     for stockCode in stockData:
+    #         news_list.append(news_csv.news(stockCode, themeCode))
+
     # print("외국인 상위 10", netPurchase.netPurchase(1))
     # print("기관계 상위 10", netPurchase.netPurchase(2))
 
@@ -56,7 +56,26 @@ if __name__ == "__main__":
     orgNetPurchase.to_sql(name='orgData', con=db_connection, if_exists='replace',index=False)
     forNetPurchase.to_sql(name='forData', con=db_connection, if_exists='replace',index=False)
 
-    for k in theme.themeCode:
-        theme_csv.getStockFromTheme(k).to_sql(name='dateString' + '_ThemeStocks', con=db_connection, if_exists='append', index=False)
-        for k in stockData:
-                news_csv.news(k).to_sql(name='dateString' + '_Stocknews', con=db_connection, if_exists='replace', index=False)
+    for themeCode in theme.themeCode:
+        theme_stock_data = theme_csv.getStockFromTheme(themeCode)
+        theme_stock_data.to_sql(name=dateString + f"_{themeCode}", con=db_connection, if_exists='replace', index=False)
+        for stock in theme_stock_data.stockCode:
+                news_csv.news(stock, themeCode).to_sql(name=dateString + f"_{stock}_News", con=db_connection, if_exists='replace', index=False)
+
+    #
+    # userContainer = dict() or list()
+    # for k in range(numofusers):
+    #   user = User(username)
+    #   userContainer[username] = user
+    #   
+
+    # while (true):
+    #   if user event on:
+    #       eventQueue.enqueue(userEvent)
+
+    # For every eventQueue:
+    # userContainer[eventUsername].setInterest()
+    # userContainer[eventUsername].showRelated()
+    # userContainer[eventUsername].intersted.to_sql(name=username+"_Interested", if_exist='replace')
+    # userContainer[eveneUsername].related.to_sql(name=username + "_Related", if_exist='replace')
+
