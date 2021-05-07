@@ -6,79 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp">
-        
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/listButton"
-            android:text="주식 목록"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:textSize="8dp"
-            android:background="@color/purple_500"
-            android:layout_marginTop="8dp"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/interestButton"
-            android:text="관심 종목"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:textSize="8dp"
-            android:background="@color/purple_500"
-            android:layout_marginTop="8dp"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/memoButton"
-            android:text="매매일지"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:textSize="8dp"
-            android:background="@color/purple_500"
-            android:layout_marginTop="8dp"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/themeButton"
-            android:text="테마주"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:textSize="8dp"
-            android:background="@color/purple_500"
-            android:layout_marginTop="8dp"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/recommendButton"
-            android:text="추천주"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:textSize="8dp"
-            android:background="@color/purple_500"
-            android:layout_marginTop="8dp"/>
-
-
-    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="599dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -105,7 +37,7 @@
             
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="364dp"
                 android:id="@+id/noticeListView"
                 android:layout_margin="10dp"
                 android:dividerHeight="10dp"
@@ -120,5 +52,79 @@
         </RelativeLayout>
 
     </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/listButton"
+            android:text="주식 목록"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:background="@color/purple_500"
+            android:layout_marginTop="8dp"
+            app:backgroundTint="@null"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/interestButton"
+            android:text="관심 종목"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:background="@color/purple_500"
+            android:layout_marginTop="8dp"
+            app:backgroundTint="@null"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/memoButton"
+            android:text="매매일지"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:background="@color/purple_500"
+            android:layout_marginTop="8dp"
+            app:backgroundTint="@null"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/themeButton"
+            android:text="테마주"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:background="@color/purple_500"
+            android:layout_marginTop="8dp"
+            app:backgroundTint="@null"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/recommendButton"
+            android:text="추천주"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:background="@color/purple_500"
+            android:layout_marginTop="8dp"
+            app:backgroundTint="@null"/>
+
+
+    </LinearLayout>
 
 </LinearLayout>
