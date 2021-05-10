@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -14,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,6 +63,7 @@ public class InterestListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         ViewHolder holder;
+
         if (view == null){
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.interest_row, null);
@@ -92,12 +97,12 @@ public class InterestListViewAdapter extends BaseAdapter {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        notifyDataSetChanged();
                     }
                 };
                 InterestListDelete interestListDelete = new InterestListDelete(name, code, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(mContext);
                 queue.add(interestListDelete);
-                //삭제시 관심종목 버튼을 다시 눌러야 삭제된 사항이 사라짐
             }
         });
         return view;

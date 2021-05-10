@@ -1,9 +1,12 @@
 package com.example.stock;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +27,9 @@ import java.util.HashMap;
 
 public class InterestFragment extends Fragment {
 
+    Context mContext;
     ListView listView;
+    SwipeRefreshLayout swipe;
     InterestListViewAdapter adapter;
     ArrayList<String> name = new ArrayList<>();
     ArrayList<String> code = new ArrayList<>();
@@ -40,7 +45,22 @@ public class InterestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_interest, container, false);
+        adapter = new InterestListViewAdapter(container.getContext(), arrayList);
         listView = view.findViewById(R.id.interestView);
+        swipe = view.findViewById(R.id.swipeRefresh);
+
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                adapter.notifyDataSetChanged();
+                ft.replace(R.id.fragment, new InterestFragment());
+                ft.commit();
+                swipe.setRefreshing(false);
+            }
+        });
+
         String name1 = "";
         String code1 = "";
 
@@ -68,11 +88,9 @@ public class InterestFragment extends Fragment {
                 StockList stockList = new StockList(name.get(i), code.get(i));
                 arrayList.add(stockList);
             }
-            adapter = new InterestListViewAdapter(getActivity(), arrayList);
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-        }
-        };
+        }};
         InterestListRequest listRequest = new InterestListRequest(name1, code1, responseListener);
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(listRequest);

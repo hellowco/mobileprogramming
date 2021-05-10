@@ -74,6 +74,7 @@ public class StockListFragment extends Fragment {
                 }
                 adapter = new StockListViewAdapter(getActivity(), arrayList);
                 listView.setAdapter(adapter);
+//                우선 주의 경우 가독성이 떨어짐
                 adapter.notifyDataSetChanged();
             }
         };

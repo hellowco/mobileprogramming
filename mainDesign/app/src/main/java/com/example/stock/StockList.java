@@ -1,6 +1,7 @@
 package com.example.stock;
 
 public class StockList {
+    String userId;
     String name;
     String code;
 
