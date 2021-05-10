@@ -41,12 +41,12 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColorHint="#626262"
                 android:id="@+id/idText"
                 android:drawableStart="@drawable/ic_baseline_person_24"
                 android:drawableLeft="@drawable/ic_baseline_person_24"
                 android:layout_marginTop="50dp"
-                android:background="@color/purple_500"/>
+                android:background="@drawable/edit_border"/>
 
             <EditText
                 android:inputType="textPassword"
@@ -56,12 +56,12 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColorHint="#626262"
                 android:id="@+id/passwordText"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:layout_marginTop="10dp"
-                android:background="@color/purple_500"/>
+                android:background="@drawable/edit_border"/>
 
             <Button
                 android:layout_width="280dp"
@@ -69,9 +69,9 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
-                android:background="@color/purple_700"
+                android:background="@drawable/button_round"
                 android:text="로그인"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="60dp"
                 android:layout_gravity="center"
                 android:id="@+id/loginButton"/>
 
