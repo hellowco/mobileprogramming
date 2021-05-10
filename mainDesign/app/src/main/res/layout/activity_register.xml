@@ -48,13 +48,13 @@
                     android:hint="아이디"
                     android:layout_gravity="center"
                     android:padding="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#ffffff"
+                    android:textColor="#000000"
+                    android:textColorHint="#626262"
                     android:id="@+id/idText"
                     android:drawableStart="@drawable/ic_baseline_person_24"
                     android:drawableLeft="@drawable/ic_baseline_person_24"
                     android:layout_marginRight="10dp"
-                    android:background="@color/purple_500"/>
+                    android:background="@drawable/edit_border"/>
 
                 <Button
                     android:layout_width="80dp"
@@ -77,13 +77,13 @@
                 android:hint="비밀번호"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#000000"
+                android:textColorHint="#626262"
                 android:id="@+id/passwordText"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:layout_marginTop="10dp"
-                android:background="@color/purple_500"/>
+                android:background="@drawable/edit_border"/>
 
             <EditText
                 android:layout_width="280dp"
@@ -91,13 +91,13 @@
                 android:hint="이메일"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#000000"
+                android:textColorHint="#626262"
                 android:id="@+id/emailText"
                 android:drawableStart="@drawable/ic_baseline_mail_outline_24"
                 android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
                 android:layout_marginTop="10dp"
-                android:background="@color/purple_500"/>
+                android:background="@drawable/edit_border"/>
 
             <RadioGroup
                 android:layout_width="280dp"
@@ -130,9 +130,9 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
-                android:background="@color/purple_700"
+                android:background="@drawable/button_round"
                 android:text="가입하기"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="60dp"
                 android:layout_gravity="center"
                 android:id="@+id/registerButton"/>
 
