@@ -61,11 +61,12 @@
                     android:layout_height="40dp"
                     android:textSize="11dp"
                     android:textStyle="bold"
-                    android:background="@color/warning"
+                    android:background="@color/colorWarning"
                     android:text="중복체크"
                     android:layout_gravity="center"
                     android:id="@+id/validateButton"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#ffffff"
+                    app:backgroundTint="@null"/>
             </LinearLayout>
 
 

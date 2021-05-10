@@ -1,48 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    app:cardCornerRadius="4dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="공지사항"
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:textColor="#ffffff"
-        android:id="@+id/noticeText"
-        android:drawableStart="@drawable/ic_baseline_textsms_24"
-        android:drawableLeft="@drawable/ic_baseline_textsms_24"
-        android:background="@color/purple_500"
-        android:textStyle="bold"/>
-    
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple_700">
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/nameText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="뉴스"
             android:layout_gravity="center"
-            android:layout_marginLeft="8dp"
-            android:padding="3dp"
-            android:text="이름"
-            android:textColor="#ffffffff"
-            android:textColorHint="#ffffffff" />
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:id="@+id/noticeText"
+            android:drawableStart="@drawable/ic_baseline_text_snippet_24"
+            android:drawableLeft="@drawable/ic_baseline_text_snippet_24"
+            android:background="@color/white"
+            android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/dateText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:padding="3dp"
-            android:text="2021-04-00"
-            android:textColor="#ffffffff"
-            android:textColorHint="#ffffffff" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_200">
 
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:padding="3dp"
+                android:text="이름"
+                android:textColor="@color/black"
+                android:textColorHint="#ffffffff" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:text="2021-XX-XX"
+                android:textColor="@color/black"
+                android:textColorHint="#ffffffff" />
+
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
