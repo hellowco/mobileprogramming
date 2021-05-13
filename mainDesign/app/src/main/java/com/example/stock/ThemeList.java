@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class RecommendFirst extends Fragment {
+public class ThemeList extends Fragment {
     ListView listView;
     RecommendListViewAdapter adapter;
     ArrayList<String> name = new ArrayList<>();
@@ -29,7 +29,7 @@ public class RecommendFirst extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.recommend_1p, container, false);
+        View view = inflater.inflate(R.layout.theme_list, container, false);
         listView = view.findViewById(R.id.sortedThemeList);
         String name1 = "";
         String code1 = "";
@@ -58,15 +58,16 @@ public class RecommendFirst extends Fragment {
                     StockList stockList = new StockList(name.get(i), code.get(i));
                     arrayList.add(stockList);
                 }
+
                 adapter = new RecommendListViewAdapter(getActivity(), arrayList);
                 listView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
         };
-        RecommendOneListRequest listRequest = new RecommendOneListRequest(name1, code1, responseListener);
+
+        RecommendThreeListRequest listRequest = new RecommendThreeListRequest(name1, code1, responseListener);
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(listRequest);
-
 
         return view;
     }

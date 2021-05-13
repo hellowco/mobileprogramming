@@ -13,7 +13,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class MainActivity extends AppCompatActivity {
+    public static boolean DEBUG_MODE = true;
 
     private ListView newsListView;
     private NewsListAdapter adapter;
