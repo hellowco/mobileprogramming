@@ -20,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private String userID;
     private String userPassword;
-    private String userName;
     private String userEmail;
     private String userGender;
     private AlertDialog dialog;
@@ -36,7 +35,6 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText idText = (EditText)findViewById(R.id.idText);
         final EditText passwordText = (EditText)findViewById(R.id.passwordText);
         final EditText emailText = (EditText)findViewById(R.id.emailText);
-        final EditText nameText = (EditText)findViewById(R.id.nameText);
 
 
         RadioGroup gendergroup = (RadioGroup)findViewById(R.id.genderGroup);
@@ -106,7 +104,6 @@ public class RegisterActivity extends AppCompatActivity {
                 String userID = idText.getText().toString();
                 String userPassword = passwordText.getText().toString();
                 String userEmail = emailText.getText().toString();
-                String userName = nameText.getText().toString();
 
                 if(!validate) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
@@ -115,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity {
                             .create();
                     return;
                 }
-                if(userID.equals("") || userPassword.equals("") || userEmail.equals("") || userGender.equals("") || userName.equals("")) {
+                if(userID.equals("") || userPassword.equals("") || userEmail.equals("") || userGender.equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                     dialog = builder.setMessage("빈 칸 없이 입력해주세요.")
                             .setNegativeButton("확인", null)
@@ -147,7 +144,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 };
-                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userGender, userName, userEmail, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userGender, userEmail, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
             }
