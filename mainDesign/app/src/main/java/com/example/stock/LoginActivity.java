@@ -1,14 +1,14 @@
 package com.example.stock;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -45,12 +45,9 @@ public class LoginActivity extends AppCompatActivity {
                 String userID = idText.getText().toString();
                 String userPassword = passwordText.getText().toString();
 
-                if(MainActivity.DEBUG_MODE)
-                {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    LoginActivity.this.startActivity(intent);
-                    finish();
-                }
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                LoginActivity.this.startActivity(intent);
+                finish();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
