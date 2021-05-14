@@ -88,6 +88,20 @@
             <EditText
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
+                android:hint="이름"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:textColorHint="#626262"
+                android:id="@+id/nameText"
+                android:drawableStart="@drawable/ic_baseline_text_format_24"
+                android:drawableLeft="@drawable/ic_baseline_text_format_24"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_border"/>
+
+            <EditText
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
                 android:hint="이메일"
                 android:layout_gravity="center"
                 android:padding="10dp"
