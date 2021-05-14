@@ -11,19 +11,19 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecommendListViewAdapter extends BaseAdapter {
+public class ThemeListViewAdapter extends BaseAdapter {
 
     Context mContext;
     LayoutInflater inflater;
-    List<StockList> stockLists;
-    ArrayList<StockList> arrayList;
+    List<ThemeList> themeLists;
+    ArrayList<ThemeList> arrayList;
 
-    public RecommendListViewAdapter(Context context, List<StockList> stockLists) {
+    public ThemeListViewAdapter(Context context, List<ThemeList> themeLists) {
         this.mContext = context;
-        this.stockLists = stockLists;
+        this.themeLists = themeLists;
         inflater = LayoutInflater.from(mContext);
-        this.arrayList = new ArrayList<StockList>();
-        this.arrayList.addAll(stockLists);
+        this.arrayList = new ArrayList<ThemeList>();
+        this.arrayList.addAll(themeLists);
         this.notifyDataSetChanged();
     }
 
@@ -34,12 +34,12 @@ public class RecommendListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return stockLists.size();
+        return themeLists.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return stockLists.get(i);
+        return themeLists.get(i);
     }
 
     @Override
@@ -63,8 +63,8 @@ public class RecommendListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
-        holder.mNameTv.setText(stockLists.get(position).getName());
-        holder.mCodeTv.setText(stockLists.get(position).getCode());
+        holder.mNameTv.setText(themeLists.get(position).getName());
+        holder.mCodeTv.setText(themeLists.get(position).getCode());
 
         return view;
     }

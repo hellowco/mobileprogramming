@@ -56,27 +56,15 @@ if __name__ == "__main__":
     theme.to_sql(name=dateString + '_theme', con=db_connection, if_exists='replace', index=False)
     orgNetPurchase.to_sql(name='orgdata', con=db_connection, if_exists='replace',index=False)
     forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
+    
+    for code in CodeName.code:
+        news_csv(code).to_sql(name=dateString + f"_{code}_News", con=db_connection, if_exists='replace', index=False)
 
     for themeCode in theme.themeCode:
         theme_stock_data = theme_csv.getStockFromTheme(themeCode)
         theme_stock_data.to_sql(name=dateString + f"_{themeCode}", con=db_connection, if_exists='replace', index=False)
-        for stock in theme_stock_data.stockCode:
-                news_csv.news(stock, themeCode).to_sql(name=dateString + f"_{stock}_News", con=db_connection, if_exists='replace', index=False)
+        
+    
 
-    #
-    # userContainer = dict() or list()
-    # for k in range(numofusers):
-    #   user = User(username)
-    #   userContainer[username] = user
-    #   
 
-    # while (true):
-    #   if user event on:
-    #       eventQueue.enqueue(userEvent)
-
-    # For every eventQueue:
-    # userContainer[eventUsername].setInterest()
-    # userContainer[eventUsername].showRelated()
-    # userContainer[eventUsername].intersted.to_sql(name=username+"_Interested", if_exist='replace')
-    # userContainer[eveneUsername].related.to_sql(name=username + "_Related", if_exist='replace')
-
+    
