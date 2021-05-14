@@ -57,7 +57,7 @@ if __name__ == "__main__":
     orgNetPurchase.to_sql(name='orgdata', con=db_connection, if_exists='replace',index=False)
     forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
     
-    for code in CodeName.code:
+    for code in CodeName.Code:
         news_csv(code).to_sql(name=dateString + f"_{code}_News", con=db_connection, if_exists='replace', index=False)
 
     for themeCode in theme.themeCode:

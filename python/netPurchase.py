@@ -25,8 +25,8 @@ def netPurchase(investFlag):
     print(cnt, date, time)
 
     for i in range(0, 10):
-        data = data.append({'code': objCpSvr.GetDataValue(0, i),
-                            '종목명': objCpSvr.GetDataValue(1, i),
+        data = data.append({'Code': objCpSvr.GetDataValue(0, i),
+                            'Name': objCpSvr.GetDataValue(1, i),
                             '현재가': objCpSvr.GetDataValue(2, i),
                             '대비': objCpSvr.GetDataValue(3, i),
                             '대비율': objCpSvr.GetDataValue(4, i),
