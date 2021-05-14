@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class ThemeRequest extends StringRequest {
     // 서버 URL 설정 ( PHP 파일 연동 )
-    final static private String URL = "http://116.34.178.39:8080/getTheme.php";
+    final static private String URL = "http://116.34.178.39:8080/.php";
     private Map<String, String> map;
 
 

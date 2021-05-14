@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ThemeFrameFragment extends Fragment {
+public class ThemeListViewFragment extends Fragment {
     ListView listView;
 
     ThemeListViewAdapter adapter;
@@ -29,8 +29,14 @@ public class ThemeFrameFragment extends Fragment {
 
     ArrayList<ThemeList> arrayList = new ArrayList<>();
 
+    String  findThemeCode;
 
-    // SELECT * FROM (datestring)_themecode WHERE themcode == (param)themecode
+    public ThemeListViewFragment(String code)
+    {
+        findThemeCode = code;
+    }
+
+    // SELECT * FROM (datestring)_themecode WHERE themcode == findThemeCode
     // 주어진 parameter 테마 코드로 테마코드 내의 stock 데이터를 받아오기
 
     @Override

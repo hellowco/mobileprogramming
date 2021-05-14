@@ -11,7 +11,7 @@ import java.util.Map;
 public class ThemeListRequest extends StringRequest {
     // 서버 URL 설정 ( PHP 파일 연동 )
 
-    final static private String URL = "http://116.34.178.39:8080/getTheme.php";
+    final static private String URL = "http://116.34.178.39:8080/.php";
     final private Map<String, String> map;
 
     // Name : 종목 이름

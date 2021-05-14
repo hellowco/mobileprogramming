@@ -46,17 +46,11 @@ public class ThemeFragment extends Fragment {
         String name1 = "";
         String code1 = "";
 
-        for(int k=0; k<5; k++){
-            Fragment frag = new ThemeFrameFragment();
-            themeAdapter.addFrag(frag);
-        }
-
-        viewPager2.setAdapter(themeAdapter);
-        themeAdapter.notifyDataSetChanged();
 
         // tabElement는 상위 테마 5개로 변경할 것
         // SEARCH * FROM (날짜)_theme
         // theme table 길이는 5개.
+        // name 은 테마 이름, code는 테마 코드
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -86,6 +80,16 @@ public class ThemeFragment extends Fragment {
         ThemeRequest listRequest = new ThemeRequest(name1, code1, responseListener);
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(listRequest);
+
+        String[] codeArray = code.toArray(new String[code.size()]);
+
+        for(int k=0; k<5; k++){
+            Fragment frag = new ThemeListViewFragment(codeArray[k]);
+            themeAdapter.addFrag(frag);
+        }
+
+        viewPager2.setAdapter(themeAdapter);
+        themeAdapter.notifyDataSetChanged();
 
         String[] tabElement = name.toArray(new String[name.size()]);
 
