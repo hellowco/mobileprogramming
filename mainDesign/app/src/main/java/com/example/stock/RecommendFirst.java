@@ -30,7 +30,7 @@ public class RecommendFirst extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recommend_1p, container, false);
-        listView = view.findViewById(R.id.recommend_1p);
+        listView = view.findViewById(R.id.sortedThemeList);
         String name1 = "";
         String code1 = "";
 
