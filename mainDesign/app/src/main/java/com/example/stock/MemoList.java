@@ -4,12 +4,18 @@ public class MemoList {
     String userId;
     String title;
     String context;
+    String date;
+    String objID;
 
-    public MemoList(String userId, String title, String context) {
+    public MemoList(String userId, String objID, String title, String context, String date) {
+        this.objID = objID;
         this.userId = userId;
         this.title = title;
         this.context = context;
+        this.date = date;
     }
+
+    public String getObjID() { return objID; }
 
     public String getTitle() {
         return this.title;
@@ -20,4 +26,6 @@ public class MemoList {
     }
 
     public String getUserId() { return this.userId; }
+
+    public String getDate() { return this.date;    }
 }
