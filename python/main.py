@@ -5,6 +5,7 @@ import serverInfo
 import jusik_csv
 import theme_csv
 import news_csv
+import top_jusik
 import netPurchase
 from indCodeName import getIndCodeName
 from stocklist import getCodeName
@@ -40,6 +41,8 @@ if __name__ == "__main__":
     forNetPurchase= netPurchase.netPurchase(1)
     orgNetPurchase = netPurchase.netPurchase(2)
     
+    top_ten = top_jusik.get_topten_jusik()
+
     #Debug
     # for themeCode in theme.themeCode:
     #     stockData = theme_csv.getStockFromTheme(themeCode).stockCode
@@ -56,8 +59,9 @@ if __name__ == "__main__":
     # theme.to_sql(name=dateString + '_theme', con=db_connection, if_exists='replace', index=False)
     # orgNetPurchase.to_sql(name='orgdata', con=db_connection, if_exists='replace',index=False)
     # forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
-    
-    for code in CodeName.code:
+    # top_ten.to_sql(name=f"{dateString}_top", con=db_connection, if_exists='replace', index=False)
+
+    for code in top_ten["stockCode"]:
         news_csv(code).to_sql(name=dateString + f"_{code}_news", con=db_connection, if_exists='replace', index=False)
 
     for themeCode in theme.themeCode:
