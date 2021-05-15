@@ -81,20 +81,20 @@ public class ThemeFragment extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(listRequest);
 
-        String[] codeArray = code.toArray(new String[code.size()]);
-
-        for(int k=0; k<5; k++){
-            Fragment frag = new ThemeListViewFragment(codeArray[k]);
-            themeAdapter.addFrag(frag);
-        }
-
-        viewPager2.setAdapter(themeAdapter);
-        themeAdapter.notifyDataSetChanged();
-
-        String[] tabElement = name.toArray(new String[name.size()]);
-
-        new TabLayoutMediator(tabLayout, viewPager2,
-                ((tab, position) -> tab.setText(tabElement[position]))).attach();
+//        String[] codeArray = code.toArray(new String[code.size()]);
+//
+//        for(int k=0; k<5; k++){
+//            Fragment frag = new ThemeListViewFragment(codeArray[k]);
+//            themeAdapter.addFrag(frag);
+//        }
+//
+//        viewPager2.setAdapter(themeAdapter);
+//        themeAdapter.notifyDataSetChanged();
+//
+//        String[] tabElement = name.toArray(new String[name.size()]);
+//
+//        new TabLayoutMediator(tabLayout, viewPager2,
+//                ((tab, position) -> tab.setText(tabElement[position]))).attach();
 
         return view;
     }

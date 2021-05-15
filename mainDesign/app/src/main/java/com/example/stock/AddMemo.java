@@ -1,11 +1,13 @@
 package com.example.stock;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,12 +22,14 @@ public class AddMemo extends AppCompatActivity {
     private EditText content;
     String mTitle = "";
     String mContent = "";
-    String userId = "test"; // 추후에 로그인한 사용자 받아와야함
+    String userId = ""; // 추후에 로그인한 사용자 받아와야함
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.memo_add);
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("userId");
 
         initialized();
     }
@@ -72,6 +76,7 @@ public class AddMemo extends AppCompatActivity {
             MemoAddRequest memoAddRequest  = new MemoAddRequest(userId, mTitle, mContent, responseListener);
             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
             queue.add(memoAddRequest);
+            Toast.makeText(getApplicationContext(), "저장되었습니다. 스와이프하여 새로고침해주세요.",Toast.LENGTH_SHORT).show();
             finish();
         });
 

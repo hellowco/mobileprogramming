@@ -4,8 +4,9 @@
     $conn = mysqli_connect("localhost", "root", "root", "test");
  
     mysqli_query($conn, "set names utf8");
+    $userId= $_POST["userId"];
  
-    $sql= "select * from interestlist";
+    $sql= "select * from interestlist where userID = $userId";
     $result=mysqli_query($conn, $sql);
  
     $rowCnt= mysqli_num_rows($result);

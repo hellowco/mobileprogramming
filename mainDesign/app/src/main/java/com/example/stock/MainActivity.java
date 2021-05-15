@@ -1,5 +1,6 @@
 package com.example.stock;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -21,11 +23,19 @@ public class MainActivity extends AppCompatActivity {
     private ListView newsListView;
     private NewsListAdapter adapter;
     private List<News> newsList;
+//    String userId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        String userId = intent.getStringExtra("userID");
+
+        Bundle bundle = new Bundle(1);
+        bundle.putString("userId",userId);
+
 
         newsListView = (ListView) findViewById(R.id.noticeListView);
         newsList = new ArrayList<News>();
@@ -55,9 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 themeButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 recommendButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 memoButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                Fragment fragment = new StockListFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new StockListFragment());
+                fragmentTransaction.replace(R.id.fragment, fragment);
+                fragment.setArguments(bundle);
                 fragmentTransaction.commit();
             }
         });
@@ -71,9 +83,11 @@ public class MainActivity extends AppCompatActivity {
                 themeButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 recommendButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 memoButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                Fragment fragment = new InterestFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new InterestFragment());
+                fragmentTransaction.replace(R.id.fragment, fragment);
+                fragment.setArguments(bundle);
                 fragmentTransaction.commit();
             }
         });
@@ -87,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
                 themeButton.setBackgroundColor(getResources().getColor(R.color.purple_700));
                 recommendButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 memoButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                Fragment fragment = new ThemeFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new ThemeFragment());
+                fragmentTransaction.replace(R.id.fragment, fragment);
+                fragment.setArguments(bundle);
                 fragmentTransaction.commit();
             }
         });
@@ -103,9 +119,11 @@ public class MainActivity extends AppCompatActivity {
                 themeButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 recommendButton.setBackgroundColor(getResources().getColor(R.color.purple_700));
                 memoButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                Fragment fragment = new RecommendFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new RecommendFragment());
+                fragmentTransaction.replace(R.id.fragment, fragment);
+                fragment.setArguments(bundle);
                 fragmentTransaction.commit();
             }
         });
@@ -119,9 +137,11 @@ public class MainActivity extends AppCompatActivity {
                 themeButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 recommendButton.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 memoButton.setBackgroundColor(getResources().getColor(R.color.purple_700));
+                Fragment fragment = new MemoFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new MemoFragment());
+                fragmentTransaction.replace(R.id.fragment, fragment);
+                fragment.setArguments(bundle);
                 fragmentTransaction.commit();
             }
         });

@@ -31,13 +31,15 @@ public class StockListViewAdapter extends BaseAdapter {
     LayoutInflater inflater;
     List<StockList> stockLists;
     ArrayList<StockList> arrayList;
+    String userId;
 
-    public StockListViewAdapter(Context context, List<StockList> stockLists) {
+    public StockListViewAdapter(Context context, List<StockList> stockLists, String userId) {
         this.mContext = context;
         this.stockLists = stockLists;
         inflater = LayoutInflater.from(mContext);
         this.arrayList = new ArrayList<StockList>();
         this.arrayList.addAll(stockLists);
+        this.userId = userId;
         this.notifyDataSetChanged();
     }
 
@@ -106,7 +108,7 @@ public class StockListViewAdapter extends BaseAdapter {
                         }
                     }
                 };
-                InterestListAdd interestListAdd = new InterestListAdd(name, code, responseListener);
+                InterestListAdd interestListAdd = new InterestListAdd(name, code, userId, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(mContext);
                 queue.add(interestListAdd);
             }

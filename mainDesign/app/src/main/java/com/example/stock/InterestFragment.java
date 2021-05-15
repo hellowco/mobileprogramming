@@ -34,6 +34,7 @@ public class InterestFragment extends Fragment {
     ArrayList<String> name = new ArrayList<>();
     ArrayList<String> code = new ArrayList<>();
     ArrayList<StockList> arrayList = new ArrayList<>();
+    String userId = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,16 @@ public class InterestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_interest, container, false);
-        adapter = new InterestListViewAdapter(container.getContext(), arrayList);
+        adapter = new InterestListViewAdapter(container.getContext(), arrayList, userId);
         listView = view.findViewById(R.id.interestView);
         swipe = view.findViewById(R.id.swipeRefresh);
+
+        String usid = "";
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            usid = bundle.getString("userId");
+            userId = usid;
+        }
 
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
 
@@ -55,7 +63,9 @@ public class InterestFragment extends Fragment {
             @Override
             public void onRefresh() {
                 adapter.notifyDataSetChanged();
-                ft.replace(R.id.fragment, new InterestFragment());
+                Fragment fragment = new InterestFragment();
+                ft.replace(R.id.fragment, fragment);
+                fragment.setArguments(bundle);
                 ft.commit();
                 swipe.setRefreshing(false);
             }
@@ -91,7 +101,7 @@ public class InterestFragment extends Fragment {
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }};
-        InterestListRequest listRequest = new InterestListRequest(name1, code1, responseListener);
+        InterestListRequest listRequest = new InterestListRequest(name1, code1, userId, responseListener);
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(listRequest);
         return view;

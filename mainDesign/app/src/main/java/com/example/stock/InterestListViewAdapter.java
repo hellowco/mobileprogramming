@@ -30,13 +30,15 @@ public class InterestListViewAdapter extends BaseAdapter {
     LayoutInflater inflater;
     List<StockList> stockLists;
     ArrayList<StockList> arrayList;
+    String userId = "";
 
-    public InterestListViewAdapter(Context context, List<StockList> stockLists) {
+    public InterestListViewAdapter(Context context, List<StockList> stockLists, String userId) {
         this.mContext = context;
         this.stockLists = stockLists;
         inflater = LayoutInflater.from(mContext);
         this.arrayList = new ArrayList<StockList>();
         this.arrayList.addAll(stockLists);
+        this.userId = userId;
         this.notifyDataSetChanged();
     }
 
@@ -100,7 +102,7 @@ public class InterestListViewAdapter extends BaseAdapter {
                         notifyDataSetChanged();
                     }
                 };
-                InterestListDelete interestListDelete = new InterestListDelete(name, code, responseListener);
+                InterestListDelete interestListDelete = new InterestListDelete(name, code, userId, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(mContext);
                 queue.add(interestListDelete);
             }

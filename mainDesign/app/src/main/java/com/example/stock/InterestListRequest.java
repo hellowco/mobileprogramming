@@ -13,12 +13,13 @@ public class InterestListRequest extends StringRequest {
     private Map<String, String> map;
 
 
-    public InterestListRequest(String name, String code, Response.Listener < String > listener) {
+    public InterestListRequest(String name, String code, String userId, Response.Listener < String > listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
         map.put("Name", name);
         map.put("Code", code);
+        map.put("userId", userId);
 
     }
 

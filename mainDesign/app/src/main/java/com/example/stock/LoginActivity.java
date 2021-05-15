@@ -45,9 +45,9 @@ public class LoginActivity extends AppCompatActivity {
                 String userID = idText.getText().toString();
                 String userPassword = passwordText.getText().toString();
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                LoginActivity.this.startActivity(intent);
-                finish();
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                LoginActivity.this.startActivity(intent);
+//                finish();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -55,17 +55,17 @@ public class LoginActivity extends AppCompatActivity {
                          try {
                              JSONObject jsonResponse = new JSONObject(response);
                              boolean success = jsonResponse.getBoolean("success");
+                             AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                              if (success) {
-                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                  dialog = builder.setMessage("로그인에 성공했습니다.")
                                          .setPositiveButton("확인", null)
                                          .create();
                                  dialog.show();
                                  Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                 intent.putExtra("userID", userID);
                                  LoginActivity.this.startActivity(intent);
                                  finish();
                              } else {
-                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                  dialog = builder.setMessage("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.")
                                          .setNegativeButton("다시 시도", null)
                                          .create();

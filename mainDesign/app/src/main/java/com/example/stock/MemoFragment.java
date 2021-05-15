@@ -38,7 +38,9 @@ public class MemoFragment extends Fragment {
     MemoAdapter adapter;
     ArrayList<MemoList> arrayList = new ArrayList<>();
     SwipeRefreshLayout swipe;
-    String userId = "test";
+    String uID = "";
+    String userId = "";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,13 +57,22 @@ public class MemoFragment extends Fragment {
         addButton = view.findViewById(R.id.addMemo);
         swipe = view.findViewById(R.id.swipeRefreshMemo);
 
+        String usid = "";
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            usid = bundle.getString("userId");
+            userId = usid;
+        }
+
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
 
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 adapter.notifyDataSetChanged();
-                ft.replace(R.id.fragment, new MemoFragment());
+                Fragment fragment = new MemoFragment();
+                ft.replace(R.id.fragment, fragment);
+                fragment.setArguments(bundle);
                 ft.commit();
                 swipe.setRefreshing(false);
             }
@@ -86,7 +97,7 @@ public class MemoFragment extends Fragment {
                             String mTitle = jsonObject.getString("title");
                             String mContent = jsonObject.getString("content");
                             String mDate = jsonObject.getString("date");
-                            userId = mName;
+                            uID = mName;
                             ID.add(mID);
                             title.add(mTitle);
                             content.add(mContent);
@@ -100,7 +111,7 @@ public class MemoFragment extends Fragment {
                     e.printStackTrace();
                 }
                 for (int i = 0; i<title.size(); i++){
-                    MemoList memoList = new MemoList(userId, ID.get(i), title.get(i), content.get(i), date.get(i));
+                    MemoList memoList = new MemoList(uID, ID.get(i), title.get(i), content.get(i), date.get(i));
                     arrayList.add(memoList);
                 }
                 recyclerView.setAdapter(adapter);
@@ -114,6 +125,7 @@ public class MemoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), AddMemo.class);
+                intent.putExtra("userId", userId);
                 startActivity(intent);
                 adapter.notifyDataSetChanged();
             }

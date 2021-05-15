@@ -33,6 +33,7 @@ public class StockListFragment extends Fragment {
     ArrayList<String> code = new ArrayList<>();
     ArrayList<StockList> arrayList = new ArrayList<>();
     SearchView mSearchView;
+    String userId = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,14 @@ public class StockListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         mSearchView = view.findViewById(R.id.searchView);
         listView = view.findViewById(R.id.stockListView);
+
+        String usid = "";
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            usid = bundle.getString("userId");
+            userId = usid;
+        }
+
         String name1 = "";
         String code1 = "";
 
@@ -72,7 +81,7 @@ public class StockListFragment extends Fragment {
                     StockList stockList = new StockList(name.get(i), code.get(i));
                     arrayList.add(stockList);
                 }
-                adapter = new StockListViewAdapter(getActivity(), arrayList);
+                adapter = new StockListViewAdapter(getActivity(), arrayList, userId);
                 listView.setAdapter(adapter);
 //                우선 주의 경우 가독성이 떨어짐
                 adapter.notifyDataSetChanged();

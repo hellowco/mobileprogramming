@@ -50,15 +50,15 @@ if __name__ == "__main__":
     # print("기관계 상위 10", netPurchase.netPurchase(2))
 
     # data to db
-    CodeName.to_sql(name= 'codename', con=db_connection, if_exists='replace',index=False)
-    indCodeName.to_sql(name= 'indcodename', con=db_connection, if_exists='replace',index=False)
-    per.to_sql(name=dateString + '_PER', con=db_connection, if_exists='replace',index=False) #if_exists : append, replace, fail(dafault)
-    theme.to_sql(name=dateString + '_theme', con=db_connection, if_exists='replace', index=False)
-    orgNetPurchase.to_sql(name='orgdata', con=db_connection, if_exists='replace',index=False)
-    forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
+    # CodeName.to_sql(name= 'codename', con=db_connection, if_exists='replace',index=False)
+    # indCodeName.to_sql(name= 'indcodename', con=db_connection, if_exists='replace',index=False)
+    # per.to_sql(name=dateString + '_per', con=db_connection, if_exists='replace',index=False) #if_exists : append, replace, fail(dafault)
+    # theme.to_sql(name=dateString + '_theme', con=db_connection, if_exists='replace', index=False)
+    # orgNetPurchase.to_sql(name='orgdata', con=db_connection, if_exists='replace',index=False)
+    # forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
     
-    for code in CodeName.Code:
-        news_csv(code).to_sql(name=dateString + f"_{code}_News", con=db_connection, if_exists='replace', index=False)
+    for code in CodeName.code:
+        news_csv(code).to_sql(name=dateString + f"_{code}_news", con=db_connection, if_exists='replace', index=False)
 
     for themeCode in theme.themeCode:
         theme_stock_data = theme_csv.getStockFromTheme(themeCode)

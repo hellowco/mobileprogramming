@@ -53,3 +53,4 @@ def news(stockCode):
                             "stockName":stockName,
                             "time"     :time,
                             "stockNews":stockNews}, ignore_index=True)
+    return data

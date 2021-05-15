@@ -8,8 +8,8 @@
     $userEmail = $_POST["userEmail"];
     $userGender = $_POST["userGender"];
  
-    $statement = mysqli_prepare($con, "INSERT INTO user VALUES (?,?,?,?)");
-    mysqli_stmt_bind_param($statement, "ssss", $userID, $userPassword, $userName, $userEmail);
+    $statement = mysqli_prepare($con, "INSERT INTO user VALUES (?,?,?,?,?)");
+    mysqli_stmt_bind_param($statement, "sssss", $userID, $userPassword, $userName, $userEmail, $userGender);
     mysqli_stmt_execute($statement);
  
  

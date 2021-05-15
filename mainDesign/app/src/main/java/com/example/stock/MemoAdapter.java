@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
@@ -44,6 +45,7 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.ViewHolder> {
                         MemoDeleteRequest memoDeleteRequest = new MemoDeleteRequest(id, responseListener);
                         RequestQueue queue = Volley.newRequestQueue(view.getContext());
                         queue.add(memoDeleteRequest);
+                        Toast.makeText(view.getContext(), "삭제되었습니다. 스와이프하여 새로고침해주세요.",Toast.LENGTH_SHORT).show();
                     }
                     notifyDataSetChanged();
                     return false;
