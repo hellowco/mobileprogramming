@@ -109,7 +109,6 @@ def getStockFromTheme(themeCode):
     # sort by "percentOfDiff"
 
     data = data.sort_values(by=["percentOfDiff"], axis=0, ascending=False)
-    print(data)
     return data
 
 def getThemeFromStock(stockCode):

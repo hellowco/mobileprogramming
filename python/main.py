@@ -11,7 +11,7 @@ from indCodeName import getIndCodeName
 from stocklist import getCodeName
 from pywinauto import application
 from datetime import datetime
-
+import pandas as pd
 
 if __name__ == "__main__":
 
@@ -43,12 +43,6 @@ if __name__ == "__main__":
     
     top_ten = top_jusik.get_topten_jusik()
 
-    #Debug
-    # for themeCode in theme.themeCode:
-    #     stockData = theme_csv.getStockFromTheme(themeCode).stockCode
-    #     for stockCode in stockData:
-    #         news_list.append(news_csv.news(stockCode, themeCode))
-
     # print("외국인 상위 10", netPurchase.netPurchase(1))
     # print("기관계 상위 10", netPurchase.netPurchase(2))
 
@@ -61,12 +55,22 @@ if __name__ == "__main__":
     forNetPurchase.to_sql(name='fordata', con=db_connection, if_exists='replace',index=False)
     top_ten.to_sql(name=f"{dateString}_top", con=db_connection, if_exists='replace', index=False)
 
+    news = pd.DataFrame()
+
     for code in top_ten["stockCode"]:
-        news_csv.news(code).to_sql(name=dateString + f"_{code}_news", con=db_connection, if_exists='replace', index=False)
+        news = news_csv.news(code) if news.empty else news.append(news_csv.news(code))
+        
+    news.to_sql(name=dateString + "_news", con=db_connection, if_exists='replace', index=False)
+
+
+
+    theme_stock_data = pd.DataFrame()
 
     for themeCode in theme.themeCode:
-        theme_stock_data = theme_csv.getStockFromTheme(themeCode)
-        theme_stock_data.to_sql(name=dateString + f"_{themeCode}", con=db_connection, if_exists='replace', index=False)
+        theme_stock_data = theme_csv.getStockFromTheme(themeCode) if theme_stock_data.empty else theme_stock_data.append(theme_csv.getStockFromTheme(themeCode))
+       
+    theme_stock_data.to_sql(name=dateString + f"_stockInTheme", con=db_connection, if_exists='replace', index=False)
+
         
     
 
