@@ -7,7 +7,7 @@
 
     $date = date('Ymd');
     
-    $sql = "select * from ".$date."_theme";
+    $sql = "select * from ".$date."_news";
     $result=mysqli_query($conn, $sql);
     
     $rowCnt= mysqli_num_rows($result);

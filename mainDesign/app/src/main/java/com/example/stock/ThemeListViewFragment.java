@@ -52,11 +52,15 @@ public class ThemeListViewFragment extends Fragment {
             public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
+//                    System.out.println(response);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                        System.out.println(jsonObject);
                         if (!response.isEmpty()) {
-                            String name1 = jsonObject.getString("Name");
-                            String code1 = jsonObject.getString("Code");
+                            String name1 = jsonObject.getString("stockName");
+                            String code1 = jsonObject.getString("stockCode");
+//                            System.out.println(name1);
+//                            System.out.println(code1);
                             name.add(name1);
                             code.add(code1);
                         } else {
@@ -68,7 +72,7 @@ public class ThemeListViewFragment extends Fragment {
                     e.printStackTrace();
                 }
                 for (int i = 0; i<name.size(); i++){
-                    ThemeList themeList = new ThemeList(name.get(i), code.get(i), theme.get(i));
+                    ThemeList themeList = new ThemeList(name.get(i), code.get(i));
                     arrayList.add(themeList);
                 }
 
@@ -78,7 +82,7 @@ public class ThemeListViewFragment extends Fragment {
             }
         };
 
-        RecommendThreeListRequest listRequest = new RecommendThreeListRequest(name1, code1, responseListener);
+        ThemeListRequest listRequest = new ThemeListRequest(findThemeCode, responseListener);
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(listRequest);
 

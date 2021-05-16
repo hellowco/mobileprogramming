@@ -69,10 +69,4 @@ if __name__ == "__main__":
     for themeCode in theme.themeCode:
         theme_stock_data = theme_csv.getStockFromTheme(themeCode) if theme_stock_data.empty else theme_stock_data.append(theme_csv.getStockFromTheme(themeCode))
        
-    theme_stock_data.to_sql(name=dateString + f"_stockInTheme", con=db_connection, if_exists='replace', index=False)
-
-        
-    
-
-
-    
+    theme_stock_data.to_sql(name=dateString + f"_stockintheme", con=db_connection, if_exists='replace', index=False)

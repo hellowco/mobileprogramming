@@ -4,12 +4,10 @@ public class ThemeList {
     String userId;
     String name;
     String code;
-    String theme;
 
-    public ThemeList(String name, String code, String theme) {
+    public ThemeList(String name, String code) {
         this.code = code;
         this.name = name;
-        this.theme = theme;
     }
 
     public String getName() {
@@ -19,7 +17,5 @@ public class ThemeList {
     public String getCode() {
         return this.code;
     }
-
-    public String getTheme() {return this.theme;}
 
 }
