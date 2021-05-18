@@ -46,7 +46,6 @@ public class InterestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_interest, container, false);
-        adapter = new InterestListViewAdapter(container.getContext(), arrayList, userId);
         listView = view.findViewById(R.id.interestView);
         swipe = view.findViewById(R.id.swipeRefresh);
 
@@ -56,6 +55,7 @@ public class InterestFragment extends Fragment {
             usid = bundle.getString("userId");
             userId = usid;
         }
+        adapter = new InterestListViewAdapter(container.getContext(), arrayList, userId);
 
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
 

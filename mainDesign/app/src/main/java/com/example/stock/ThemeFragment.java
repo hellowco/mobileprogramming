@@ -66,8 +66,10 @@ public class ThemeFragment extends Fragment {
                             String code1 = jsonObject.getString("themeCode");
 //                            System.out.println(name1);
 //                            System.out.println(code1);
-                            name.add(name1);
-                            code.add(code1);
+                            if(!name.contains(name1))
+                                name.add(name1);
+                            if(!code.contains(code1))
+                                code.add(code1);
                         } else {
                             Toast.makeText(getContext(), "목록 불러오기에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                             return;
@@ -88,7 +90,7 @@ public class ThemeFragment extends Fragment {
 
                 new TabLayoutMediator(tabLayout, viewPager2,
                         ((tab, position) -> tab.setText(tabElement[position]))).attach();
-//                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
         };
         ThemeRequest listRequest = new ThemeRequest(name1, code1, responseListener);

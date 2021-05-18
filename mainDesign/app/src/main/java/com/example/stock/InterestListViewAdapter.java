@@ -30,7 +30,7 @@ public class InterestListViewAdapter extends BaseAdapter {
     LayoutInflater inflater;
     List<StockList> stockLists;
     ArrayList<StockList> arrayList;
-    String userId = "";
+    String userId;
 
     public InterestListViewAdapter(Context context, List<StockList> stockLists, String userId) {
         this.mContext = context;
