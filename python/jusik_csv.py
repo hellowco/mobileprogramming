@@ -5,7 +5,7 @@ import pandas as pd
 import win32com.client
 
 
-def jusik(datestring):
+def jusik():
     """
     모든 종목에 대한 PER, 순매수 받아오는 함수
     """
@@ -18,7 +18,7 @@ def jusik(datestring):
     # kospi = objCpCodeMgr.GetStockListByMarket(1)  # 코스피
     # kosdaq = objCpCodeMgr.GetStockListByMarket(2)  # 코스닥
     # list = [kospi, kosdaq]
-    indCode = 24
+    indCode = 182 # 180 kospi200, 182 kospi50
     list = objCpCodeMgr.GetGroupCodeList(indCode)  # indCode 업종코드
 
     # data순서 "번호","업종코드","주식코드","종목명","PER","전일 외국인순매수","전일 기관순매수"

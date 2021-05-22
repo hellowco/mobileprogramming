@@ -11,7 +11,7 @@ def getIndCodeName():
 
     for i in range(1000):
         name = objCpCodeMgr.GetIndustryName(i)
-        code = i;
+        code = i
         data = data.append({'indCode': code,'indName': name}, ignore_index=True)
         
     return data

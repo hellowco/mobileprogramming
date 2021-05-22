@@ -36,7 +36,7 @@ if __name__ == "__main__":
     # get api data
     CodeName = getCodeName()
     indCodeName = getIndCodeName()
-    per = jusik_csv.jusik(dateString)
+    per = jusik_csv.jusik()
     theme = theme_csv.theme(dateString)
     forNetPurchase= netPurchase.netPurchase(1)
     orgNetPurchase = netPurchase.netPurchase(2)

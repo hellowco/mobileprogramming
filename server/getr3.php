@@ -4,8 +4,11 @@
     $conn = mysqli_connect("localhost", "root", "root", "test");
  
     mysqli_query($conn, "set names utf8");
+
+    // $date = date('Ymd');
+    $date = "20210522";
  
-    $sql= "select * from interestlist";
+    $sql= "select * from ".$date."_per order by PER DESC Limit 10";
     $result=mysqli_query($conn, $sql);
  
     $rowCnt= mysqli_num_rows($result);
