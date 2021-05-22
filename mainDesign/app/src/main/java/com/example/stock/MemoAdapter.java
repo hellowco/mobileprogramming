@@ -95,15 +95,9 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.ViewHolder> {
 
     public void onBindViewHolder(ViewHolder viewHolder, final int position){
         System.out.println(mData.size());
-        if (mData.size() < 1){
-            viewHolder.getTitle().setText("메모가 없습니다.");
-            viewHolder.getContent().setText("메모를 추가해주세요.");
-            viewHolder.getDate().setVisibility(View.INVISIBLE);
-        }else{
         viewHolder.getTitle().setText(mData.get(position).getTitle());
         viewHolder.getContent().setText(mData.get(position).getContext());
         viewHolder.getDate().setText(mData.get(position).getDate());
-        }
     }
 
     public int getItemCount() {

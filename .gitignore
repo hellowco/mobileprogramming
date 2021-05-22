@@ -147,3 +147,15 @@ EncryptScript/*
 !EncryptScript/Encrypt.py
 mainDesign/.gradle/6.7.1/fileHashes/fileHashes.lock
 *.properties
+mainDesign/.gradle/6.7.1/executionHistory/executionHistory.bin
+mainDesign/.gradle/6.7.1/executionHistory/executionHistory.lock
+mainDesign/.gradle/6.7.1/fileHashes/fileHashes.bin
+mainDesign/.gradle/6.7.1/fileHashes/fileHashes.lock
+mainDesign/.gradle/6.7.1/fileHashes/resourceHashesCache.bin
+mainDesign/.gradle/6.7.1/javaCompile/classAnalysis.bin
+mainDesign/.gradle/6.7.1/javaCompile/jarAnalysis.bin
+mainDesign/.gradle/6.7.1/javaCompile/javaCompile.lock
+mainDesign/.gradle/6.7.1/javaCompile/taskHistory.bin
+mainDesign/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+*.bin
+*.lock
