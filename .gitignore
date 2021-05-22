@@ -145,3 +145,5 @@ myLog/
 
 EncryptScript/*
 !EncryptScript/Encrypt.py
+mainDesign/.gradle/6.7.1/fileHashes/fileHashes.lock
+*.properties
