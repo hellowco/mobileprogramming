@@ -100,17 +100,13 @@ public class StockListViewAdapter extends BaseAdapter {
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        System.out.println(response);
                     }
                 };
                 InterestListAdd interestListAdd = new InterestListAdd(name, code, userId, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(mContext);
                 queue.add(interestListAdd);
+                Toast.makeText(v.getContext(), name+"이(가) 관심목록에 추가되었습니다.", Toast.LENGTH_LONG).show();
             }
         });
         return view;

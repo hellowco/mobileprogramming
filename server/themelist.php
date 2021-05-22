@@ -5,7 +5,8 @@
  
     mysqli_query($conn, "set names utf8");
 
-    $date = date('Ymd');
+    // $date = date('Ymd');
+    $date = "20210516";
     $code = $_POST["Code"];
     
     $sql = "select * from ".$date."_stockintheme where themeCode = ".$code;

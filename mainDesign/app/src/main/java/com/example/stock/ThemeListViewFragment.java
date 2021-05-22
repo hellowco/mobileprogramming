@@ -80,7 +80,7 @@ public class ThemeListViewFragment extends Fragment {
 
                 adapter = new ThemeListViewAdapter(getActivity(), arrayList);
                 listView.setAdapter(adapter);
-//                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
         };
 

@@ -72,6 +72,7 @@ public class InterestListViewAdapter extends BaseAdapter {
 
             holder.mCodeTv = view.findViewById(R.id.intListCode);
             holder.mNameTv = view.findViewById(R.id.intListName);
+            holder.mBtn = view.findViewById(R.id.listDelete);
 
             view.setTag(holder);
         }
@@ -82,7 +83,11 @@ public class InterestListViewAdapter extends BaseAdapter {
         holder.mNameTv.setText(stockLists.get(position).getName());
         holder.mCodeTv.setText(stockLists.get(position).getCode());
 
-        holder.mBtn = view.findViewById(R.id.listDelete);
+        if (stockLists.get(position).getName().equals("empty")){
+            holder.mNameTv.setText("관심종목이 없습니다.");
+            holder.mCodeTv.setText("관심종목을 추가해주세요.");
+            holder.mBtn.setVisibility(View.INVISIBLE);
+        }
 
         holder.mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,18 +98,19 @@ public class InterestListViewAdapter extends BaseAdapter {
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        notifyDataSetChanged();
+//                        try {
+//                            JSONArray jsonArray = new JSONArray(response);
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                        notifyDataSetChanged();
                     }
                 };
                 InterestListDelete interestListDelete = new InterestListDelete(name, code, userId, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(mContext);
                 queue.add(interestListDelete);
+                Toast.makeText(v.getContext(), name+"이(가) 관심목록에서 삭제되었습니다.\n 스와이프하여 새로고침 해주세요.", Toast.LENGTH_LONG).show();
             }
         });
         return view;

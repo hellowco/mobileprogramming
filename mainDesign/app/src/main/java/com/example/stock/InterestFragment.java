@@ -78,6 +78,12 @@ public class InterestFragment extends Fragment {
         @Override
         public void onResponse(String response) {
             try {
+                if(response.equals("[]")) {
+                    String name1 = "empty";
+                    String code1 = "empty";
+                    name.add(name1);
+                    code.add(code1);
+                }
                 JSONArray jsonArray = new JSONArray(response);
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);

@@ -3,9 +3,10 @@
  
     $conn = mysqli_connect("localhost", "root", "root", "test");
  
-    mysqli_query($conn, "set names utf8");
+    // mysqli_query($conn, "set names utf8");
 
-    $date = date('Ymd');
+    // $date = date('Ymd');
+    $date = "20210516";
     
     $sql = "select * from ".$date."_theme";
     $result=mysqli_query($conn, $sql);

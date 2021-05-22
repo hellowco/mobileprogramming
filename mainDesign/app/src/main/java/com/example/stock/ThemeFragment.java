@@ -90,7 +90,6 @@ public class ThemeFragment extends Fragment {
 
                 new TabLayoutMediator(tabLayout, viewPager2,
                         ((tab, position) -> tab.setText(tabElement[position]))).attach();
-                adapter.notifyDataSetChanged();
             }
         };
         ThemeRequest listRequest = new ThemeRequest(name1, code1, responseListener);

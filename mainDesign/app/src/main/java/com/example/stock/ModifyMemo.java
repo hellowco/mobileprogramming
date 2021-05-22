@@ -56,6 +56,7 @@ public class ModifyMemo extends AppCompatActivity {
             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
             queue.add(memoModifyRequest);
             finish();
+            Toast.makeText(v.getContext(), "메모가 업데이트 되었습니다.\n 스와이프하여 새로고침 해주세요.", Toast.LENGTH_LONG).show();
         });
         //그냥 종료
         exit.setOnClickListener(v -> {

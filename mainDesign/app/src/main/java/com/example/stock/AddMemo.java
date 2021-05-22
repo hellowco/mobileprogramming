@@ -76,7 +76,7 @@ public class AddMemo extends AppCompatActivity {
             MemoAddRequest memoAddRequest  = new MemoAddRequest(userId, mTitle, mContent, responseListener);
             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
             queue.add(memoAddRequest);
-            Toast.makeText(getApplicationContext(), "저장되었습니다. 스와이프하여 새로고침해주세요.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "저장되었습니다.\n 스와이프하여 새로고침 해주세요.",Toast.LENGTH_SHORT).show();
             finish();
         });
 

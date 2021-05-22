@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -38,6 +39,7 @@ public class MemoFragment extends Fragment {
     MemoAdapter adapter;
     ArrayList<MemoList> arrayList = new ArrayList<>();
     SwipeRefreshLayout swipe;
+    TextView textView;
     String uID = "";
     String userId = "";
 
@@ -56,6 +58,9 @@ public class MemoFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         addButton = view.findViewById(R.id.addMemo);
         swipe = view.findViewById(R.id.swipeRefreshMemo);
+        textView = view.findViewById(R.id.emptyMemo);
+
+        textView.setVisibility(View.INVISIBLE);
 
         String usid = "";
         Bundle bundle = getArguments();
@@ -113,6 +118,9 @@ public class MemoFragment extends Fragment {
                 for (int i = 0; i<title.size(); i++){
                     MemoList memoList = new MemoList(uID, ID.get(i), title.get(i), content.get(i), date.get(i));
                     arrayList.add(memoList);
+                }
+                if (arrayList.size() == 0){
+                    textView.setVisibility(View.VISIBLE);
                 }
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();

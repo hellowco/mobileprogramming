@@ -5,11 +5,9 @@
     $Code = $_POST["Code"];
     $userId= $_POST["userId"];
  
-    $statement = mysqli_prepare($con, "INSERT INTO interestlist VALUES (?,?,?)");
-    mysqli_stmt_bind_param($statement, "sss", $Code, $Name, $userId);
-    mysqli_stmt_execute($statement);
-    $response = array();
+    $statement = mysqli_query($con, "INSERT INTO interestlist VALUES ('".$Code."','".$Name."','".$userId."')");
+    
+    echo $statement;
 
-    echo json_encode($response);
- 
+    mysqli_close($con);
 ?>

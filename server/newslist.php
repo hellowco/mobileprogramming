@@ -5,7 +5,8 @@
  
     mysqli_query($conn, "set names utf8");
 
-    $date = date('Ymd');
+    // $date = date('Ymd');
+    $date = "20210516";
     
     $sql = "select * from ".$date."_news";
     $result=mysqli_query($conn, $sql);

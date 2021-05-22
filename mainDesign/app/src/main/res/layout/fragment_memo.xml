@@ -17,6 +17,12 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/emptyMemo"
+        android:text="메모가 없습니다. \n 메모를 추가해주세요."/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addMemo"
         android:layout_width="wrap_content"
