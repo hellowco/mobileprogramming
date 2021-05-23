@@ -18,7 +18,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class ThemeListViewFragment extends Fragment {
     ListView listView;
@@ -72,9 +71,17 @@ public class ThemeListViewFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
                 for (int i = 0; i<name.size(); i++){
+                    boolean flag = false;
                     ThemeList themeList = new ThemeList(name.get(i), code.get(i));
-                    if(!arrayList.contains(themeList))
+                    for (ThemeList temp : arrayList) {
+                        if (temp.isSame(themeList)){
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if (!flag)
                         arrayList.add(themeList);
                 }
 

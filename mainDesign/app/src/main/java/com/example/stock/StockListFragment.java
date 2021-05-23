@@ -1,18 +1,16 @@
 package com.example.stock;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.ListFragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -62,6 +60,8 @@ public class StockListFragment extends Fragment {
             public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
+
+                    Log.v("Out", "stock");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         if (!response.isEmpty()) {

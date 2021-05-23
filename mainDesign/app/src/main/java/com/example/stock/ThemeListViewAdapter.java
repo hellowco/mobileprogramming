@@ -36,7 +36,6 @@ public class ThemeListViewAdapter extends BaseAdapter {
     public int getCount() {
         return themeLists.size();
     }
-
     @Override
     public Object getItem(int i) {
         return themeLists.get(i);

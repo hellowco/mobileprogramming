@@ -31,4 +31,8 @@ public class ThemeAdapter extends FragmentStateAdapter {
         // ViewPager 로 보여줄 View의 전체 개수
         return mFragmentList.size();
     }
+
+    public void clearFrag(){
+        mFragmentList.clear();
+    }
 }

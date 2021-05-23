@@ -1,6 +1,7 @@
 package com.example.stock;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,6 @@ import java.util.ArrayList;
 public class ThemeFragment extends Fragment {
 
     ThemeListViewAdapter adapter;
-
     ArrayList<String> name = new ArrayList<>();
     ArrayList<String> code = new ArrayList<>();
     ArrayList<StockList> arrayList = new ArrayList<>();
@@ -76,11 +76,16 @@ public class ThemeFragment extends Fragment {
                         }
                     }
                 } catch (JSONException e) {
+                    Log.d("Error", "Json Error");
                     e.printStackTrace();
                 }
-                for(int k=0; k<5; k++){
-                    Fragment frag = new ThemeListViewFragment(code.get(k));
-                    themeAdapter.addFrag(frag);
+
+                if(!code.isEmpty()) {
+                    themeAdapter.clearFrag();
+                    for (int k = 0; k < 5; k++) {
+                        Fragment frag = new ThemeListViewFragment(code.get(k));
+                        themeAdapter.addFrag(frag);
+                    }
                 }
 
                 viewPager2.setAdapter(themeAdapter);
@@ -96,8 +101,7 @@ public class ThemeFragment extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(listRequest);
 
-
-
         return view;
     }
+
 }
