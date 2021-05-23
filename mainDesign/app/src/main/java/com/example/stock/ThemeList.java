@@ -18,4 +18,9 @@ public class ThemeList {
         return this.code;
     }
 
+    public boolean isSame(ThemeList sub)
+    {
+        return (sub.code.equals(code) && sub.name.equals(name));
+    }
+
 }
