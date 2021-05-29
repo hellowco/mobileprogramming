@@ -55,7 +55,7 @@ public class InterestFragment extends Fragment {
             usid = bundle.getString("userId");
             userId = usid;
         }
-        adapter = new InterestListViewAdapter(container.getContext(), arrayList, userId);
+        adapter = new InterestListViewAdapter(getContext(), arrayList, userId);
 
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
 
@@ -112,4 +112,6 @@ public class InterestFragment extends Fragment {
         queue.add(listRequest);
         return view;
     }
+
+    @Override public void onDestroyView() { super.onDestroyView(); }
 }

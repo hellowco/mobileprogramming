@@ -1,13 +1,18 @@
 package com.example.stock;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,7 +40,44 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> name = new ArrayList<>();
     ArrayList<String> news = new ArrayList<>();
     ArrayList<String> time = new ArrayList<>();
-//    String userId = "";
+    String userId = "";
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.home:
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("userID", userId);
+                startActivity(intent);
+                break;
+            case R.id.logoutButton:
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("로그아웃").setMessage("로그아웃을 하시겠습니까?")
+                        .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
-        String userId = intent.getStringExtra("userID");
+        userId = intent.getStringExtra("userID");
+        System.out.println(userId);
 
         Bundle bundle = new Bundle(1);
         bundle.putString("userId",userId);
@@ -94,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         final Button themeButton = (Button) findViewById(R.id.themeButton);
         final Button recommendButton = (Button) findViewById(R.id.recommendButton);
         final Button memoButton = (Button) findViewById(R.id.memoButton);
+        final ImageButton logoutButton = (ImageButton) findViewById(R.id.logoutButton);
         final LinearLayout home = (LinearLayout) findViewById(R.id.home);
 
         listButton.setOnClickListener(new View.OnClickListener() {

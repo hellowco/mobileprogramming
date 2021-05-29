@@ -112,4 +112,6 @@ public class StockListFragment extends Fragment {
         });
         return view;
     }
+
+    @Override public void onDestroyView() { super.onDestroyView(); }
 }

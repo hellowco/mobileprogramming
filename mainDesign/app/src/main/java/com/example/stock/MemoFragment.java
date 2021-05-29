@@ -141,4 +141,5 @@ public class MemoFragment extends Fragment {
 
         return view;
     }
+    @Override public void onDestroyView() { super.onDestroyView(); }
 }

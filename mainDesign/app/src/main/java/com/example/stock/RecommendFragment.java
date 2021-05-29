@@ -53,7 +53,8 @@ public class RecommendFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) { }
+    @Override
+    public void onDestroyView() { super.onDestroyView(); }
 
-    }
 }
