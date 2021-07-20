@@ -19,7 +19,7 @@ if __name__ == "__main__":
     #     # 대신 login
     #     app = application.Application()
     #     print("cybosplus 실행")
-    #     app.start('C:\\DAISHIN\\STARTER\\ncStarter.exe /prj:cp /id:isungun1 /pwd:aptes#1 /pwdcert:doqxptmxm#1 /autostart')
+    #     app.start('C:\\DAISHIN\\STARTER\\ncStarter.exe /prj:cp /id:#### /pwd:#### /pwdcert:#### /autostart')
     #     time.sleep(30)
     # except: 
     #     print('증권 api 로그인 실패')
